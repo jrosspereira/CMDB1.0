@@ -7,6 +7,7 @@ import java.util.Date;
  */
 public class Movie {
 
+    private Long movieId;
     private String name;
     private String summary;
     private String stars;
@@ -23,6 +24,14 @@ public class Movie {
     private String remarks;
     private String reviews;
     private String hdLocation;
+
+    public Long getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(Long movieId) {
+        this.movieId = movieId;
+    }
 
     public String getHdLocation() {
         return hdLocation;

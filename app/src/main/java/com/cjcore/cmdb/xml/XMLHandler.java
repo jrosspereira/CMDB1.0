@@ -66,7 +66,16 @@ public class XMLHandler extends DefaultHandler{
         /**
          * Sets the values after retrieving the values from the XML tags
          * */
-        if (localName.equalsIgnoreCase("MovieName"))
+
+        if (localName.equalsIgnoreCase("MovieID")) {
+            String movieIdStr = elementValue;
+            Long  movieId= null;
+            if (movieIdStr != null && !movieIdStr.isEmpty()) {
+                movieId = Long.parseLong(movieIdStr);
+            }
+            movie.setMovieId(movieId);
+
+        }else if (localName.equalsIgnoreCase("MovieName"))
             movie.setName(elementValue);
 
         else if (localName.equalsIgnoreCase("Summary"))
@@ -93,29 +102,39 @@ public class XMLHandler extends DefaultHandler{
         }
         else if (localName.equalsIgnoreCase("Location"))
             movie.setLocation(elementValue);
-        else if (localName.equalsIgnoreCase("Categories")){
+
+        else if (localName.equalsIgnoreCase("Categories"))
             movie.setCategories(elementValue);
-        }else if(localName.equalsIgnoreCase("Director")){
+
+        else if(localName.equalsIgnoreCase("Director"))
             movie.setDirector(elementValue);
-        }else if(localName.equalsIgnoreCase("Rated")){
+
+        else if(localName.equalsIgnoreCase("Rated"))
             movie.setRated(elementValue);
-        }else if(localName.equalsIgnoreCase("RunTime")) {
+
+        else if(localName.equalsIgnoreCase("RunTime"))
             movie.setRuntime(elementValue);
-        }else if(localName.equalsIgnoreCase("IMDBID")){
+
+        else if(localName.equalsIgnoreCase("IMDBID"))
             movie.setImdbId(elementValue);
-        }else if(localName.equalsIgnoreCase("FileName")){
+
+        else if(localName.equalsIgnoreCase("FileName"))
             movie.setFileName(elementValue);
-        }else if(localName.equalsIgnoreCase("FileSize")){
+
+        else if(localName.equalsIgnoreCase("FileSize"))
             movie.setFileSize(elementValue);
-        }else if(localName.equalsIgnoreCase("Remarks")){
+
+        else if(localName.equalsIgnoreCase("Remarks"))
             movie.setRemarks(elementValue);
-        }else if(localName.equalsIgnoreCase("Reviews")){
+
+        else if(localName.equalsIgnoreCase("Reviews"))
             movie.setReviews(elementValue);
-        }else if(localName.equalsIgnoreCase("HDLocation")){
+
+        else if(localName.equalsIgnoreCase("HDLocation"))
             movie.setReviews(elementValue);
-        }else if(localName.equalsIgnoreCase("tblMovies")){
+
+        else if(localName.equalsIgnoreCase("tblMovies"))
             data.setMovieList(movie);
-        }
 
     }
 
