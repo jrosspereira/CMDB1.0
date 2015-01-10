@@ -6,10 +6,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  * Created by jpereira on 12/26/2014.
  */
@@ -17,15 +13,11 @@ public class XMLHandler extends DefaultHandler{
 
     String elementValue = null;
     Boolean elementOn = false;
-    public static XMLGettersSetters data = null;
+    public static XMLGettersSetters data = new XMLGettersSetters();
     public Movie movie;
 
     public static XMLGettersSetters getXMLData() {
         return data;
-    }
-
-    public static void setXMLData(XMLGettersSetters data) {
-        data = data;
     }
 
     /**
@@ -38,20 +30,8 @@ public class XMLHandler extends DefaultHandler{
         elementOn = true;
 
         if (localName.equals("tblMovies")){
-            data = new XMLGettersSetters();
             movie = new Movie();
         }
-
-       // } else if (localName.equals("CD")) {
-            /**
-             * We can get the values of attributes for eg. if the CD tag had an attribute( <CD attr= "band">Akon</CD> )
-             * we can get the value "band". Below is an example of how to achieve this.
-             *
-             * String attributeValue = attributes.getValue("attr");
-             * data.setAttribute(attributeValue);
-             *
-             * */
-        //s}
     }
 
     /**
@@ -131,7 +111,7 @@ public class XMLHandler extends DefaultHandler{
             movie.setReviews(elementValue);
 
         else if(localName.equalsIgnoreCase("HDLocation"))
-            movie.setReviews(elementValue);
+            movie.setHdLocation(elementValue);
 
         else if(localName.equalsIgnoreCase("tblMovies"))
             data.setMovieList(movie);
@@ -145,6 +125,7 @@ public class XMLHandler extends DefaultHandler{
     public void characters(char[] ch, int start, int length)
    {
         if (elementOn) {
+
             elementValue = new String(ch, start, length);
             elementOn = false;
         }

@@ -1,11 +1,14 @@
 package com.cjcore.cmdb.xml;
 
+import com.cjcore.cmdb.bean.Movie;
+
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -15,9 +18,7 @@ import javax.xml.parsers.SAXParserFactory;
  */
 public class XMLParser {
 
-    private Boolean returnBool = false;
-
-    public boolean parseXml(String fileFullPath){
+    public List<Movie> parseXml(String fileFullPath){
 
         InputStream is = null;
 
@@ -39,12 +40,13 @@ public class XMLParser {
             xmlR.setContentHandler(myXMLHandler);
             xmlR.parse(inputSource);
 
-            returnBool = true;
             is.close();
+
+            return myXMLHandler.getXMLData().getMovieList();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
-        return returnBool;
+        return null;
     }
 
 }

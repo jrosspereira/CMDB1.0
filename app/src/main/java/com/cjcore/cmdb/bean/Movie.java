@@ -1,12 +1,11 @@
 package com.cjcore.cmdb.bean;
 
-import java.util.Date;
-
 /**
  * Created by user on 12/26/2014.
  */
 public class Movie {
 
+    public static final Integer queryLimit = 15;
     private Long movieId;
     private String name;
     private String summary;
