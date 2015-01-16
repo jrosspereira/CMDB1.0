@@ -160,4 +160,14 @@ public class Movie {
         this.reviews = reviews;
     }
 
+    //Transient fields
+    public String getFmtCategories(){
+
+        if(this.getCategories() != null){
+            return this.categories.replace(",", " |");
+        }
+
+        return null;
+    }
+
 }
