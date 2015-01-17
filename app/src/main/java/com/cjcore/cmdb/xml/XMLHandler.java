@@ -16,6 +16,9 @@ public class XMLHandler extends DefaultHandler{
     public static XMLGettersSetters data = new XMLGettersSetters();
     public Movie movie;
 
+    private StringBuilder reviewChars = new StringBuilder();
+    private String nodeName = "";
+
     public static XMLGettersSetters getXMLData() {
         return data;
     }
@@ -29,6 +32,7 @@ public class XMLHandler extends DefaultHandler{
 
         elementOn = true;
 
+        nodeName = localName;
         if (localName.equals("tblMovies")){
             movie = new Movie();
         }
@@ -107,14 +111,18 @@ public class XMLHandler extends DefaultHandler{
         else if(localName.equalsIgnoreCase("Remarks"))
             movie.setRemarks(elementValue);
 
-        else if(localName.equalsIgnoreCase("Reviews"))
-            movie.setReviews(elementValue);
-
         else if(localName.equalsIgnoreCase("HDLocation"))
             movie.setHdLocation(elementValue);
 
         else if(localName.equalsIgnoreCase("tblMovies"))
             data.setMovieList(movie);
+
+        else if(localName.equalsIgnoreCase("Reviews")){
+            movie.setReviews(reviewChars.toString());
+
+            reviewChars = new StringBuilder();
+        }
+
 
     }
 
@@ -124,12 +132,16 @@ public class XMLHandler extends DefaultHandler{
     @Override
     public void characters(char[] ch, int start, int length)
    {
+       String value = new String(ch, start, length);
         if (elementOn) {
-
-            elementValue = new String(ch, start, length);
+            elementValue = value;
             elementOn = false;
+
         }
 
+       if(nodeName.equalsIgnoreCase("Reviews")){
+           reviewChars.append(value);
+       }
     }
 
 }

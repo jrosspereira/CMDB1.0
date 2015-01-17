@@ -1,13 +1,14 @@
 package com.cjcore.cmdb.xml;
 
 import com.cjcore.cmdb.bean.Movie;
+import com.cjcore.cmdb.utils.FileUtils;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.util.List;
 
 import javax.xml.parsers.SAXParser;
@@ -32,7 +33,11 @@ public class XMLParser {
 
             is = new FileInputStream(fileFullPath);
 
+            //String xmlStr = FileUtils.getStringFromInputStream(is);
+            //xmlStr.replace("&quot;", ",");
+
             InputSource inputSource = new InputSource(is);
+
             /**
             * Create the Handler to handle each of the XML tags.
             **/
