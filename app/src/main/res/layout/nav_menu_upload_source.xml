@@ -17,8 +17,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Choose XML File"
-        android:id="@+id/textView"
+        android:text="@string/tv_choose_xml"
+        android:id="@+id/tv_choose_xml"
         android:layout_marginTop="50dp"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
@@ -28,12 +28,12 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SELECT FILE"
+        android:text="@string/btn_select_file"
         android:id="@+id/selectfile"
         android:textSize="10dp"
         android:layout_alignBottom="@+id/fileName"
         android:layout_alignTop="@+id/fileName"
-        android:layout_toRightOf="@+id/textView" />
+        android:layout_toRightOf="@+id/tv_choose_xml" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,8 +49,8 @@
         android:backgroundTintMode="screen"
         android:autoText="false"
         android:layout_marginTop="40dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        android:layout_below="@+id/tv_choose_xml"
+        android:layout_alignRight="@+id/tv_choose_xml"
+        android:layout_alignEnd="@+id/tv_choose_xml" />
 
 </RelativeLayout>

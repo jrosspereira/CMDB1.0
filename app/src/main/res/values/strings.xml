@@ -11,4 +11,10 @@
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
 
+    <string name="btn_more_random">More</string>
+    <string name="btn_select_file">Select File</string>
+    <string name="btn_upload">Upload</string>
+
+    <string name="tv_choose_xml">Choose XML File</string>
+
 </resources>

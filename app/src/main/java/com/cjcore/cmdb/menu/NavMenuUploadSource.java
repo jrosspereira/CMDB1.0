@@ -126,9 +126,9 @@ public class NavMenuUploadSource extends Fragment {
     }
 
     private void deleteDbAndInsertMovies(List<Movie> movies){
-        MovieService service = new MovieService();
+        MovieService service = new MovieService(rootview.getContext());
 
-        service.deleteDbContents(rootview.getContext());
-        service.insertMovies(movies, rootview.getContext());
+        service.deleteDbContents();
+        service.insertMovies(movies);
     }
 }
