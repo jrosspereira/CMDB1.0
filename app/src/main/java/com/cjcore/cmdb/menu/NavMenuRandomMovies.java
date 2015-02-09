@@ -8,12 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.cjcore.cmdb.R;
 import com.cjcore.cmdb.bean.Movie;
 import com.cjcore.cmdb.db.service.MovieService;
 import com.cjcore.cmdb.view.MovieAdapter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class NavMenuRandomMovies extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.nav_menu_random_movies, container, false);
 
-        ArrayList<Movie> movies = new ArrayList<Movie>(getMovieList());
+        ArrayList<Movie> movies = getMovieList();
 
         final ListView lv = (ListView)rootview.findViewById(R.id.listView);
         lv.setAdapter(new MovieAdapter(rootview.getContext(), movies));
@@ -48,11 +50,15 @@ public class NavMenuRandomMovies extends Fragment{
         return rootview;
     }
 
-    private List<Movie> getMovieList(){
+    private ArrayList<Movie> getMovieList(){
         MovieService movieService = new MovieService(rootview.getContext());
 
-        return movieService.findRandomMovies();
+        List<Movie> movies = movieService.findRandomMovies();
+        if(movies != null && !movies.isEmpty()){
+            return new ArrayList<Movie>(movies);
+        }
 
+        return new ArrayList<Movie>();
     }
 
     private void generateNewRandomMovies(ListView lv){

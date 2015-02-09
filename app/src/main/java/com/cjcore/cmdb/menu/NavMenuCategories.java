@@ -20,15 +20,11 @@ public class NavMenuCategories extends Fragment{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.wtf("TEST", "TEST");
-
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.wtf("TEST1", "TEST1");
-
         rootview = inflater.inflate(R.layout.nav_menu_categories, container, false);
 
         return rootview;

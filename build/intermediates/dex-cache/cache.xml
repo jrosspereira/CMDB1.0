@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pre-dex-items>
+<items version="2" >
 
     <item
-        dex="D:\Android\CMDB\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-e305e9c0fec2ab1d4fbb254fc874d9851d1374bd.jar"
-        jar="C:\Program Files (x86)\Android\adt-bundle\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jar="C:\Program Files (x86)\Android\adt-bundle\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="D:\Android\CMDB\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-e9664f68427d94a1f071ed7a60a285ac0ee17a9b.jar" />
+    </item>
+    <item
+        jar="D:\Android\CMDB\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="D:\Android\CMDB\app\build\intermediates\pre-dexed\debug\classes-eca6f4cd93c79ac1ca606b5331d6d8b6d79dca86.jar" />
+    </item>
+    <item
+        jar="D:\Android\CMDB\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="D:\Android\CMDB\app\build\intermediates\pre-dexed\debug\classes-dc07684591f21efc3b9e5eb3415ba3ff5144470a.jar" />
+    </item>
+    <item
+        jar="D:\Android\CMDB\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="D:\Android\CMDB\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-09d6009e9c490251a4a83e456f6045122f09f4f4.jar" />
+    </item>
 
-</pre-dex-items>
+</items>

@@ -4,6 +4,9 @@ package com.cjcore.cmdb;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,16 +14,27 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import com.cjcore.cmdb.db.service.MovieService;
+import com.cjcore.cmdb.menu.NavMenuMovielist;
+
+import java.util.Locale;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -57,6 +71,8 @@ public class NavigationDrawerFragment extends Fragment {
     private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
+
+    EditText editsearch;
 
     public NavigationDrawerFragment() {
     }
@@ -238,22 +254,103 @@ public class NavigationDrawerFragment extends Fragment {
         if (mDrawerLayout != null && isDrawerOpen()) {
             inflater.inflate(R.menu.global, menu);
             showGlobalContextActionBar();
+
+            if(menu.findItem(R.id.et_search) != null){
+                // Locate the EditText in menu.xml
+                editsearch = (EditText) menu.findItem(R.id.et_search).getActionView();
+
+                // Capture Text in EditText
+                editsearch.addTextChangedListener(textWatcher);
+
+                // Show the search menu item in menu.xml
+                MenuItem menuSearch = menu.findItem(R.id.et_search);
+
+                menuSearch.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+
+                    // Menu Action Collapse
+                    @Override
+                    public boolean onMenuItemActionCollapse(MenuItem item) {
+                        // Empty EditText to remove text filtering
+                        editsearch.setText("");
+                        editsearch.clearFocus();
+                        return true;
+                    }
+
+                    // Menu Action Expand
+                    @Override
+                    public boolean onMenuItemActionExpand(MenuItem item) {
+                        // Focus on EditText
+                        editsearch.requestFocus();
+
+                        // Force the keyboard to show on EditText focus
+                        InputMethodManager imm = (InputMethodManager) getActivity()
+                                .getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                        return true;
+                    }
+                });
+            }
+
         }
+
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    public void searchMovie(View v){
+        TextView searchString = (TextView)v.findViewById(R.id.et_search);
+
+        Fragment movieListPage = new NavMenuMovielist();
+        Bundle args = new Bundle();
+        args.putString("searchString", searchString.getText().toString());
+        movieListPage.setArguments(args);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.container, movieListPage).commit();
+
+    }
+    // EditText TextWatcher
+    private TextWatcher textWatcher = new TextWatcher() {
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+                                      int arg3) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+                                  int arg3) {
+
+        }
+
+    };
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
+
+        final View itemView = item.getActionView();
+
+        switch(item.getItemId()){
+            case R.id.action_search:
+                //Search button
+                ImageButton btnSearch = (ImageButton)itemView.findViewById(R.id.ibtn_search);
+
+                 btnSearch.setOnClickListener(new View.OnClickListener() {
+                     @Override
+                    public void onClick(View v) {
+                         searchMovie(itemView);
+                     }
+                 });
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        if (item.getItemId() == R.id.action_example) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     /**

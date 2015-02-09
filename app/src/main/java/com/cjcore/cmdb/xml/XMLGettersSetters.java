@@ -19,7 +19,7 @@ public class XMLGettersSetters {
 
     public void setMovieList(Movie movie) {
         this.movieList.add(movie);
-        Log.i("This is the movie:", movie.getName() + " - " + movie.getCategories() + " - " + movie.getImdbId());
+        //Log.i("This is the movie:", movie.getName() + " - " + movie.getCategories() + " - " + movie.getImdbId());
     }
 
 }
