@@ -259,9 +259,6 @@ public class NavigationDrawerFragment extends Fragment {
                 // Locate the EditText in menu.xml
                 editsearch = (EditText) menu.findItem(R.id.et_search).getActionView();
 
-                // Capture Text in EditText
-                editsearch.addTextChangedListener(textWatcher);
-
                 // Show the search menu item in menu.xml
                 MenuItem menuSearch = menu.findItem(R.id.et_search);
 
@@ -308,27 +305,6 @@ public class NavigationDrawerFragment extends Fragment {
         fragmentManager.beginTransaction().replace(R.id.container, movieListPage).commit();
 
     }
-    // EditText TextWatcher
-    private TextWatcher textWatcher = new TextWatcher() {
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-                                      int arg3) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence arg0, int arg1, int arg2,
-                                  int arg3) {
-
-        }
-
-    };
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -348,6 +324,9 @@ public class NavigationDrawerFragment extends Fragment {
                  });
                 return true;
             default:
+                if (mDrawerToggle.onOptionsItemSelected(item)) {
+                    return true;
+                }
                 return super.onOptionsItemSelected(item);
         }
 
