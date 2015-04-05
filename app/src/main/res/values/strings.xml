@@ -3,10 +3,10 @@
 
     <string name="app_name">CMDB</string>
 
-    <string name="title_section1">Categories</string>
-    <string name="title_section2">Advanced Search</string>
-    <string name="title_section3">Random Movies</string>
-    <string name="title_section4">Upload Source</string>
+    <string name="title_categories">Categories</string>
+    <string name="title_advanced_search">Advanced Search</string>
+    <string name="title_random_movies">Random Movies</string>
+    <string name="title_upload_source">Upload Source</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -35,4 +35,21 @@
     <string name="label_movie_remarks">Remarks</string>
     <string name="label_movie_reviews">Reviews</string>
 
+    <string name="label_movie_director_plain">Director</string>
+    <string name="label_movie_actors_plain">Actor</string>
+    <string name="label_movie_rate_plain">Rate</string>
+    <string name="label_movie_rated_plain">Rated</string>
+    <string name="label_movie_runtime_plain">Runtime</string>
+    <string name="label_movie_year_release_plain">Year Release</string>
+
+    <string name="min_year">1960</string>
+
+    <string-array name="rated_array">
+        <item></item>
+        <item>G</item>
+        <item>PG</item>
+        <item>PG-13</item>
+        <item>R</item>
+        <item>R-18</item>
+    </string-array>
 </resources>

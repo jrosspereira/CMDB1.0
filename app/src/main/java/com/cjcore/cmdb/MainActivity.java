@@ -6,6 +6,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +38,8 @@ public class MainActivity extends Activity
      */
     private CharSequence mTitle;
 
+    private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,44 +60,49 @@ public class MainActivity extends Activity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
        Fragment objFragment =  null;
+       String fragmentName  = "";
 
         switch(position){
             case 0:
                 objFragment = new NavMenuCategories();
+                fragmentName = "Category";
                 break;
             case 1:
                 objFragment = new NavMenuAdvancedSearch();
+                fragmentName = "AdvancedSearch";
                 break;
             case 2:
                 objFragment = new NavMenuRandomMovies();
+                fragmentName = "RandomMovies";
                 break;
             case 3:
                 objFragment = new NavMenuUploadSource();
+                fragmentName = "UploadSource";
                 break;
 
         }
+
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
-       // fragmentManager.beginTransaction()
-      //          .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-       //         .commit();
 
-        fragmentManager.beginTransaction().replace(R.id.container, objFragment).commit();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, objFragment)
+                .addToBackStack(fragmentName).commit();
     }
 
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+                mTitle = getString(R.string.title_categories);
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+                mTitle = getString(R.string.title_advanced_search);
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+                mTitle = getString(R.string.title_random_movies);
                 break;
             case 4:
-                mTitle = getString(R.string.title_section4);
+                mTitle = getString(R.string.title_upload_source);
                 break;
         }
     }
@@ -183,7 +191,8 @@ public class MainActivity extends Activity
         singleMoviePage.setArguments(args);
 
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, singleMoviePage).commit();
+        fragmentManager.beginTransaction()
+                .addToBackStack("MovieList").replace(R.id.container, singleMoviePage).commit();
 
     }
 
@@ -196,7 +205,8 @@ public class MainActivity extends Activity
         movieListPage.setArguments(args);
 
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, movieListPage).commit();
+        fragmentManager.beginTransaction()
+                .addToBackStack("MovieView").replace(R.id.container, movieListPage).commit();
 
     }
 

@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="C:\Program Files (x86)\Android\adt-bundle\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="D:\Android\CMDB\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-e9664f68427d94a1f071ed7a60a285ac0ee17a9b.jar" />
-    </item>
-    <item
         jar="D:\Android\CMDB\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="20.0.0"
@@ -21,6 +14,13 @@
         revision="20.0.0"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
         <dex dex="D:\Android\CMDB\app\build\intermediates\pre-dexed\debug\classes-dc07684591f21efc3b9e5eb3415ba3ff5144470a.jar" />
+    </item>
+    <item
+        jar="C:\Users\user\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="D:\Android\CMDB\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-0242e03cd59fe7866a66bd4a95b67553c3e970c1.jar" />
     </item>
     <item
         jar="D:\Android\CMDB\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
